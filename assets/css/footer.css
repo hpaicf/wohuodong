@@ -1,0 +1,28 @@
+﻿@charset "utf-8";
+/* 
+---------------------------------
+Site: site global_footer.css  
+Author:  chenfeng
+Last Changed by : chenfeng
+Last Update : 2015-12-01 16:15
+--------------------------------- 
+*/
+/*footer*/
+.footer{width: 100%;height: 200px;background:#3d3d3d;}
+.foot_main{width: 1100px;margin: 0 auto;}
+.foot_main .users{margin-top: 0;}
+.foot_main .users a{width: 45px;margin-left: 10px;}
+.foot_main .users a#qq{margin-left: 70px;}
+.foot_b2 li{float: left;background: url(../images/footerline.png) no-repeat right center;background-size: auto 60%;}
+.foot_b2{background: url(../images/footer_line.png) no-repeat center left;}
+.foot{width:33%;height: 100%;float: left;margin-top: 40px;padding-left: 40px;}
+.foot li{width: 80px;height:40px; }
+.foot_b2 li.link{width: 80%;padding-left: 15px;}
+.foot_b2 li.noline{background: none;}
+.foot_b2 li.link a{display: inline-block;width: auto;}
+.foot li a{line-height: 40px;color: #dcdcdc;font-size: 13px;}
+.foot li a:hover{color:#d31107; }
+.foot_b3{height:120px;background: url(../images/footer_logo.png) no-repeat center;width: 20%;}
+.foot_bottom li a{width: auto;height: auto;display: inline-block;}
+.foot_bottom ul{width: 80%;margin: 0 auto;}
+.foot_bottom li{float: left;width: 30%;text-align: center;}
