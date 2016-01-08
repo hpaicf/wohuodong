@@ -51,5 +51,6 @@ a,a:hover{text-decoration: none;}
 .head_right .choice a#publishaBtn{background: #fff;border-radius: 10px;color: #82db71;height: 33px;line-height: 33px;padding: 0 15px;margin-top: 14px;}
 .login_div ul li{float: left;margin-right:5px;}
 .login_div ul li a{width:65px;height: 28px;color: #fff;letter-spacing: 5px;font-size: 18px;line-height: 28px;text-align: center;margin-top: 15px;}
-.login_div ul li a.this_a,.login_div ul li a:hover{color: #fff;}
+.login_div ul li a.this_a,.login_div ul li a:hover{color:#f65757;}
+
 

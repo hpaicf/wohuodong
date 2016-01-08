@@ -64,7 +64,7 @@ function maskclose(){
                                         '<!-- 登录后结束-->'+
                                         '<!-- 登录前 -->'+
                                             '<ul>'+
-                                              '<li><a href="../../login.html" class="this_a" id="head_loginBtn">登录</a></li>'+
+                                              '<li><a href="../../login.html"  id="head_loginBtn">登录</a></li>'+
                                               '<li><a href="../../register.html" id="head_registerBtn" >注册</a></li>'+
                                             '</ul>'+
                                         '</div>'+
