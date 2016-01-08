@@ -323,10 +323,68 @@ function maskclose(){
 
 $(function(){
     $.oop.init();
-    // 焦点图设置
-    $('.ck-slide').ckSlide({
-        autoPlay: true
-    });
+    
 });
+
+//首页的图片轮播
+  (function($) { //焦点图js
+    $.extend({
+      'foucs': function(con) {
+        var $container = $('.slide_container'),
+          $imgs = $container.find('.slide .ck-slide-wrapper li'),
+          $leftBtn = $container.find('a.ck-next'),
+          $rightBtn = $container.find('a.ck-prev'),
+          config = {
+            interval: con && con.interval || 3500,
+            animateTime: con && con.animateTime || 500,
+            direction: con && (con.direction === 'left'),
+            _imgLen: $imgs.length
+          },
+          i = 0;
+          getNextIndex = function(y) {
+            return i + y >= config._imgLen ? i + y - config._imgLen : i + y;
+          },
+          getPrevIndex = function(y) {
+            return i - y < 0 ? config._imgLen + i - y : i - y;
+          },
+          silde = function(d) {
+            $imgs.eq((d ? getPrevIndex(2) : getNextIndex(2))).css('left', (d ? '-2400px' : '2400px'));
+            $imgs.animate({
+              'left': (d ? '+' : '-') + '=1200px'
+            }, config.animateTime);
+            i = d ? getPrevIndex(1) : getNextIndex(1);
+          },
+          s = setInterval(function() {
+            silde(config.direction);
+            // $.each($imgs,function(i){
+            //         if ($imgs.eq(i).css('left')=="0px"){
+            //             $imgs.eq(i+1).addClass('active');
+            //         }
+            //         else{
+            //             $imgs.eq(i+1).removeClass('active');
+            //         }
+            // });
+          }, config.interval);
+          $imgs.eq(i).css('left', 0).end().eq(i + 1).css('left', '1200px').end().eq(i - 1).css('left', '-1200px');
+        $leftBtn.click(function() {
+          if ($(':animated').length === 0) {
+            silde(false);
+          }
+          
+
+        });
+        $rightBtn.click(function() {
+          if ($(':animated').length === 0) {
+            silde(true);
+          }
+        });
+      }
+    });
+  }(jQuery));
+  $.foucs({
+    direction: 'right'
+  });
+
+  
 
   
