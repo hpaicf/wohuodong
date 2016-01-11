@@ -88,6 +88,8 @@ function maskclose(){
                 });
 
         },
+
+        
         
         // 首页三个板块数据模型
         index_data_global:function(listCommodity,listMission,id){
@@ -252,9 +254,9 @@ function maskclose(){
                 );
             };
 
-            var newsRoll = new LineRoll(list_focus, 1500);
+            var newsRoll = new LineRoll(list_focus, 500);
             newsRoll.rollContainer = $(box_focus);
-            newsRoll.speed = 1500;
+            newsRoll.speed = 500;
             newsRoll.rolllist = $(article_list);
             newsRoll.rolllist.eq(0).show();
             newsRoll.rolllwidth = function () {
@@ -279,7 +281,7 @@ function maskclose(){
                     }
                 }
             };
-            var roleRoll = new LineRoll('.school_ul', 1500);
+            var roleRoll = new LineRoll('.school_ul', 500);
             roleRoll.tabtime = 1;
             roleRoll.fn = function (t) {
                 var $rolegroup = $('.school_box'), _t = t;

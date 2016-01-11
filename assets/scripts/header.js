@@ -27,7 +27,22 @@ function maskclose(){
             that.init_css()//兼容性js css
             // that.select_city();//全国地点选择
         },
-        
+
+         //接口封装
+        model_ajax:function($param,$url,$fn){
+            var that=this;
+            $.ajax({
+                type: 'GET',
+                url: that.server_url +$url,
+                dataType: 'jsonp',
+                data:$param,
+                success: function($data){
+                    if ($fn){$fn($data);}
+                }
+            });
+        },
+
+        // 页面初始化加载
         init_css:function(){
             var that=this;
              // 登录注册框的按钮初始化隐藏
@@ -80,9 +95,8 @@ function maskclose(){
         //城市信息地理加载
         head_city_interface:function(){
             var that=this;
-                that.model_ajax(null,'MainPageController/loopPic/v1',function($data){
-                    var _ck_slide_wrapper="";
-                    var _dot_wrap="";
+                that.model_ajax(null,'Location/AllCities/v1',function($data){
+                    var _city_info="";
                     // 成功
                     if ($data.status==1) {
                         $.each($data.message,function(item,i){
@@ -106,20 +120,49 @@ function maskclose(){
 
         }, 
 
-        // 全国地点选择
-        select_city:function(){
-            $(".selectfirst").live("mouseenter",function(){
-                $(".select").slideDown();
-                return false;
-            });
-            $(document).on("mouseleave",":not('.select,#area')",function(e){
-                var target  = $(e.target);
-                if(target.closest(".select").length == 0){
-                    $(".select").slideUp("fast");
-                };
-                e.stopPropagation();
-            });
+        // // 全国地点选择
+        // select_city:function(){
+        //     $(".selectfirst").live("mouseenter",function(){
+        //         $(".select").slideDown();
+        //         return false;
+        //     });
+        //     $(document).on("mouseleave",":not('.select,#area')",function(e){
+        //         var target  = $(e.target);
+        //         if(target.closest(".select").length == 0){
+        //             $(".select").slideUp("fast");
+        //         };
+        //         e.stopPropagation();
+        //     });
            
+        // }
+
+        // 首页活动接口交互
+        index_activity:function(){
+            var that=this;
+            that.model_ajax(null,'MainPageController/activity/v1',function($data){
+                    var _activity_html="";
+                    // 成功
+                    if ($data.status==1) {
+                        $.each($data.message,function(item,i){
+                            // 轮播大图
+                            __activity_html+='<li style="display:none">'+
+                                                  '<a href="javascript:;"><img src="'+item.activityCover+'" alt="'+item.activityName+'"></a>'+
+                                                '</li>';
+                            // 圆点聚焦
+                             _dot_wrap+='<li><em>'+(i+1)+'</em></li>';
+
+                        });
+                        //轮播dom加载
+                        $(".slide_wrap ul.ck-slide-wrapper").empty().append(_ck_slide_wrapper);
+                        $(".slide_wrap .dot-wrap").empty().append(_dot_wrap);
+                    }
+                    // 其他情况
+                    else if($data.status<=0){
+                        alert("正在加载....."+$data.message);
+                    }
+                });
+
+
         }
      
     }});

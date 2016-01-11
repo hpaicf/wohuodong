@@ -54,8 +54,6 @@ a.frame_rightBtn:hover,a#forgetpwd:hover{color:#328d86; }
 /*第三方*/
 .three_users{width: 100%;margin-top: 10px;}
 .three_title{background: url(../images/login_line.png) no-repeat center;color:#717071;text-align: center;font-size: 13px; }
-.users{text-align: center;width: 70%;margin: 0 auto;margin-top: 20px;height: 80px;}
-.users a{width:55px;height: 55px;float: left;margin-left: 35px;}
 /*输入框*/
 .frame table tr input:focus{
     box-shadow:0 0 3px rgba(217,254,77,0.3)  inset;
