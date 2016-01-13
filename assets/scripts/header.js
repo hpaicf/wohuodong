@@ -140,7 +140,13 @@ function maskclose(){
         index_activity:function(){
             var that=this;
             that.model_ajax(null,'MainPageController/activity/v1',function($data){
-                    var _activity_html="";
+                    var _activity_hot_html="";
+                    var _activity1_html="";
+                    var _activity2——html="";
+                    var _activity3_html="";
+                    var _activity4_html="";
+                    var _activity5_html="";
+                    var _activity6_html="";
                     // 成功
                     if ($data.status==1) {
                         $.each($data.message,function(item,i){
