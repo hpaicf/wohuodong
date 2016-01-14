@@ -80,4 +80,9 @@ html{_text-overflow:ellipsis;} /*解决IE6下图片抖动*/
 html,body{_background-image:url(about:blank);_background-attachment:fixed;}
 .ie6fixedTL{position:absolute;left:expression(eval(document.documentElement.scrollLeft));top:expression(eval(document.documentElement.scrollTop))}
 .ie6fixedBR{position:absolute;left:expression(eval(document.documentElement.scrollLeft+document.documentElement.clientWidth-this.offsetWidth)-(parseInt(this.currentStyle.marginLeft,10)||0)-(parseInt(this.currentStyle.marginRight,10)||0));top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)))}
+@media screen and (max-width: 1201px){
+  html{
+    width: 1200px;
+  }
+}
 
