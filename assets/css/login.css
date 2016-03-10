@@ -36,7 +36,7 @@ Last Update : 2014-11-22 16:15
 .frame table tr{width: 100%;height:60px;}
 .frame table tr td{font-size: 15px;color:#777a77; }
 .frame table tr td.input{margin-left:40px;font-size: 14px;}
-.frame table tr td input{border:1px solid #82db71;height: 33px;padding: 0 8px;color: #777a77;width: 180px;border-radius: 5px;}
+.frame table tr td input{border:1px solid #82db71;height: 33px;padding: 0 8px;color: #777a77;width: 180px;border-radius: 5px;line-height: 17px;}
 p.warning{display: none;height: 15px;color: #ef4239;line-height:15px;width: 60%;margin: 0 auto;text-align: right;margin-top: 10px;font-size: 13px;}
 .frame table tr td.label{padding-left: 20px;width: 100px;}
 .checkinput,.Btn{width: 80%;margin: 0 auto;color: #777a77;height: 50px;}

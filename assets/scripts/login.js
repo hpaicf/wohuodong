@@ -18,7 +18,7 @@ function maskclose(){
 }
 (function($){
         $.extend({login:{
-        server_url:"http://115.28.133.46:8080/wohuodong/WHD/",//服务器程序基础地址
+        server_url:"http://103.55.27.51:8080/wohuodong/WHD/",//服务器程序基础地址
         phoneCode:"",
         second:60,
         headDom:null,//头部dom的加载
@@ -111,7 +111,7 @@ function maskclose(){
             var that=this;
             $.ajax({
                 type: 'GET',
-                url: that.server_url +'Login/login',
+                url: that.server_url +'Login/login/v1',
                 dataType: 'jsonp',
                 data:$param,
                 success: function($data){
@@ -161,7 +161,8 @@ function maskclose(){
                             // 提醒框显示
                             html='<p>恭喜官人！注册沃活动账号成功，马上登录吧<a href="../login.html" id="regsucceedlogin">立即登录</a></p></div>';
                             $("#warning_frame .warning_content").empty().append(html);
-                            that.warning_open();
+                            maskopen();
+                            $("#warning_frame").fadeIn();
                         }
                         // 其他情况
                         else if($data.status<=0){
@@ -179,7 +180,7 @@ function maskclose(){
             var that=this;
             $.ajax({
                 type: 'GET',
-                url: that.server_url +'register/data',
+                url: that.server_url +'register/data/',
                 dataType: 'jsonp',
                 data:$param,
                 success: function($data){

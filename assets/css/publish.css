@@ -1,0 +1,54 @@
+/*发布界面*/
+.wrapper_html{background:url(../images/background.png) rgba(253,253,253,0.5) repeat;}
+.dotted{border-bottom: 1px dashed #82db71;width: 100%;height:20px; }
+a{width: 100%;height: 100%;display: block;text-align: center;}
+.clearfloat{clear: both;}
+/*主体内容*/
+/*标题*/
+.content{width:1200px;margin: 0 auto;background:url(../images/background.png) rgba(252,252,252,0.9) repeat;margin-bottom: 100px;}
+.title,.main{width: 100%;border:1px solid #cdf0c6;height:80px;background:url(../images/publish.png) rgba(205,240,198,0.2) 96% center no-repeat;margin-top:25px;background-size: 10%;}
+.title .text{width:80%;height: 35px;margin-left: 23px;background: url(../images/pub_in.png) #fff no-repeat left;border: 1px solid #c7efbe;margin-top: 20px;background-size: auto 110%;border-left: none;}
+.title .text input{width:900px;height: 100%;border:none;margin-left: 55px;}
+.main{height: auto;background:rgba(205,240,198,0.2); }
+.main_div{width: 100%;margin: 0 auto;border-bottom:1px solid #cdf0c6;min-height: 120px;}
+.main_div .div_title{width:110px;float: left;padding-left: 30px;color:#595757;font-size: 16px;text-align: center;margin-top: 30px;}
+.main_div .div_content{float: left;width: 1000px;}
+.classes #activi_class li{width:120px;height: 28px;margin-right:30px;border:1px solid #e7ebe6;float: left;margin-top: 25px;}
+.classes #activi_class li a{line-height: 28px;font-size: 14px;color: #595757;}
+.classes #activi_class li a.this_a,.classes #activi_class li a:hover{color: #fff;background:#82db71;}
+.main_div .datetime{width: 300px;height: 40px;border: 1px solid #d9dcd9;color: #9e9e9f;text-align: center;float: left;margin-right: 150px;margin-top: 25px;}
+.main_div .date,.main_div .time{width: 179px;background: url(../images/date.png) no-repeat #fff 10% center;height: 100%;line-height:40px; font-size: 14px;float: left;}
+.main_div .time{width: 120px;background: url(../images/time.png) no-repeat #fff 10% center;position: relative;}
+.main_div .time ul{width: 120px;height: 300px;border:1px solid #e0e3df;overflow-y:auto ;position: absolute;top: 40px;left: -1px;display: none;}
+.main_div .time ul li{height: 30px;line-height: 30px;text-align: center;font-size: 14px;color: #444;cursor: pointer;}
+.main_div .time ul li:hover{background: #eee;}
+.main_div .date{border-right: 1px solid #cdf0c6; }
+.activi_friends .div_title,.activi_limit .div_title,.activi_cover .div_title,.activi_time .div_title,.activi_place .div_title{margin-top: 40px;}
+.activi_time{min-height: 160px;}
+.activi_place .datetime{width: 750px;}
+.activi_place #city{background:  url(../images/city.png) no-repeat #fff 10% center;background-size: auto 70%;}
+.activi_place #place{width: 570px;background:  url(../images/place.png) no-repeat #fff 2% center;text-align: left;}
+.activi_place #place input{width: 525px;margin-left: 40px;height: 100%;border: none;padding-left: 5px;font-size: 14px;}
+.activi_detail .div_content textarea{margin-top: 25px;padding: 10px;width:730px;height: 100px;border: 1px solid #d9dcd9;}
+.activi_detail{height: 170px;}
+/*活动封面*/
+.activi_cover{height: 300px;}
+.activi_cover img{width: 100%;}
+.activi_cover .upfi_img{float: left;}
+.activi_cover .div_content .upfi_img{width: 300px;height: auto;}
+.activi_cover .datetime{background: #fff;line-height:40px;font-size: 14px;float: none;}
+.activi_cover #imgEditor{width: 100%;height:180px;background: #fff;border: 1px solid #d9dcd9;margin-top: 12px;}
+.activi_cover .imgView{width: 170px;float: left;margin-top: 29px;margin-left: 50px;color: #9e9e9f;font-size: 14px;text-align: center;}
+.activi_cover .imgView img{margin-bottom: 10px;}
+/*邀请好友*/
+.activi_friends{height: 160px;}
+.activi_friends #friends{border: 1px solid #d9dcd9;background:  url(../images/user1.png) no-repeat #fff 10% center;background-size: auto 70%;color:#9e9e9f;text-align: center;margin-top: 25px;}
+.activi_friends .div_content input{border: 1px solid #d9dcd9;width: 330px;height: 40px;background: #fff;padding-left: 20px;font-size: 14px;margin-top: 25px;}
+/*提交*/
+.sub{min-height: 110px;}
+.left_allow{width:200px;padding-left: 50px;float: left;}
+.left_allow div{margin-top: 20px;}
+.left_allow div:first-child{margin-top: 36px;}
+.left_allow span{display: inline-block;font-size: 12px;color: #595757;margin-left: 5px;}
+.left_allow span a{display: inline;color: #595757;}
+.sub a#submit{width: 600px;height: 50px;background:#b0b0b1;border-radius: 10px;line-height: 50px;font-size: 18px;font-weight: bold;letter-spacing: 2px;float: left;margin-top: 30px;margin-left: 150px;}

@@ -18,8 +18,8 @@ function maskclose(){
 }
 
 (function($){
-        $.extend({oop:{
-        server_url:"http://115.28.133.46:8080/wohuodong/WHD/",//服务器程序地址
+        $.extend({index:{
+        server_url:"http://103.55.27.51:8080/wohuodong/WHD/",//服务器程序地址
         target:0,
         loginCount:0,//用户登录次数
         phoneCode:"",
@@ -29,6 +29,9 @@ function maskclose(){
             var that=this;
             that.init_css()//兼容性js css
             this.tabs_model();//推荐活动切换
+            that.group_data();
+            that.activity_data();
+            that.slide_interface();
             // that.slide_interface()//轮播图接口
             // that.quick_to();//快捷链接
             // that.index_data();//首页信息数据接口
@@ -47,6 +50,10 @@ function maskclose(){
         },
 
         //接口封装
+        /* $param:传递的数据上传参数
+           $url:接口拼接子地址
+           $fn：函数
+           */
         model_ajax:function($param,$url,$fn){
             var that=this;
             $.ajax({
@@ -63,172 +70,135 @@ function maskclose(){
         // 轮播图接口交互
         slide_interface:function(){
             var that=this;
-                that.model_ajax(null,'MainPageController/loopPic/v1',function($data){
-                    var _ck_slide_wrapper="";
-                    var _dot_wrap="";
+            that.model_ajax(null,'MainPageController/loopPic/v1',function($data){
+                var _ck_slide_wrapper=[];
+                // 成功
+                if ($data.status==1) {
+                    $.each($data.message,function(i,item){
+                        // 轮播大图
+                        _ck_slide_wrapper.push('<li >'+
+                                            '<a href="javascript:;"><img src="'+item.activityCover+'" alt="'+item.activityName+'"></a>'+
+                                            '</li>');
+                    });
+                    //轮播dom加载
+                    $(".slide_container .slide ul.ck-slide-wrapper").empty().append(_ck_slide_wrapper.join(''));
+                    
+                }
+                // 其他情况
+                else if($data.status<=0){
+                    alert("正在加载....."+$data.message);
+                }
+            });
+        },
+
+        // 首页活动接口加载
+        activity_data:function(){
+            var that=this;
+            that.model_ajax(null,'MainPageController/activity/v1',function($data){
+                var _con_title_ul=[];
+                var _activity_box=[];
+                // 成功
+                if ($data.status==1) {
+                    $.each($data.message,function(i,item){
+                        // 数据加载
+                        var _activity_list=[];
+                        var _activity_list_ul=[];
+                        console.log(item.ActivityType.ActivityTypeName);
+                        if (i==0) {
+                            _con_title_ul.push('<li class="thistab" attr-href="#1"><a href="javascript:;">'+item.ActivityType.ActivityTypeName+'</a><span class="line"></span></li>')
+                            _activity_list.push('<div class="article_list" style="display:block;"><ul>');
+                        }else{
+                            _con_title_ul.push('<li attr-href="#1"><a href="javascript:;">'+item.ActivityType.ActivityTypeName+'</a><span class="line"></span></li>')
+                            _activity_list.push('<div class="article_list" style="display: none;"><ul>');
+                        }
+                        $.each(item.Activities,function(i,item){ 
+                            console.log(item.activityName);
+                             _activity_list_ul.push('<li>'+
+                                            '<div class="item">'+
+                                              '<div class="item_img">'+
+                                                  '<img src="'+item.activityCover+'">'+
+                                              '</div>'+
+                                              '<div class="item_title">'+
+                                              ''+item.activityName+'</div>'+
+                                              '<div class="item_info">'+
+                                                '<div class="time">'+item.beginTime+
+                                                '</div>'+
+                                                '<div class="place">'+item.activityLocation+
+                                                '</div>'+
+                                              '</div>'+
+                                              '<div class="other">'+
+                                                '<div class="join">'+
+                                                  '<span>'+item.memberCount+'</span>人已参加'+
+                                                '</div>'+
+                                                '<div class="share">'+
+                                                  '<a href="javascript:;"></a>'+
+                                                '</div>'+
+                                              '</div>'+       
+                                            '</div>'+
+                                          '</li>');
+                        });
+                        _activity_list.push(_activity_list_ul.join(''));
+                        _activity_list.push('</ul></div>');
+                        _activity_box.push(_activity_list.join(''));
+                    });
+                    //标题加载
+                    $(".re_activity .activity_list .con_title ul").empty().append(_con_title_ul.join(''));
+                    $(".re_activity .activity_list .slide_wrap .activity_box").empty().append(_activity_box.join(''));
+                }
+                // 其他情况
+                else if($data.status<=0){
+                    alert("正在加载....."+$data.message);
+                }
+            });
+        },
+        
+        // 首页圈子接口加载
+        group_data:function(){
+            var that=this;
+                that.model_ajax(null,'MainPageController/group/v1',function($data){
+                    var _re_circle_ul=[];
                     // 成功
                     if ($data.status==1) {
-                        $.each($data.message,function(item,i){
-                            // 轮播大图
-                            _ck_slide_wrapper+='<li style="display:none">'+
-                                                  '<a href="javascript:;"><img src="'+item.activityCover+'" alt="'+item.activityName+'"></a>'+
-                                                '</li>';
-                            // 圆点聚焦
-                             _dot_wrap+='<li><em>'+(i+1)+'</em></li>';
-
+                        $.each($data.message,function(i,item){
+                            // 数据加载
+                            console.log(item.ProvinceName);
+                            _re_circle_ul.push('<li>'+
+                                                    '<div class="circle_img">'+
+                                                        '<img src="'+item.GroupCover+'">'+
+                                                        '<div class="circle_place">'+
+                                                           '<img src="assets/images/cplace.png">'+item.CityName+''+
+                                                           '<span>'+item.ProvinceName+'</span>'+
+                                                       ' </div>'+
+                                                    '</div>'+
+                                                   ' <div class="item_info">'+
+                                                        '<div class="info_title">'+item.GroupName+
+                                                         ' <span>'+item.Remark+'</span>'+
+                                                       ' </div>'+
+                                                       ' <div class="other">'+
+                                                        '<div class="join">'+
+                                                            '<span>'+item.MemberCount+'</span>人已参加'+
+                                                        '</div>'+
+                                                        '<div class="join_icon">'+
+                                                            '<a href="javascript:;"></a>'+
+                                                        '</div>'+
+                                                    '</div> '+
+                                                   ' </div>'+
+                                                '</li>');
                         });
+                        
                         //轮播dom加载
-                        $(".slide_wrap ul.ck-slide-wrapper").empty().append(_ck_slide_wrapper);
-                        $(".slide_wrap .dot-wrap").empty().append(_dot_wrap);
+                        $(".re_circle ul").empty().append(_re_circle_ul.join(''));
                     }
                     // 其他情况
                     else if($data.status<=0){
                         alert("正在加载....."+$data.message);
                     }
                 });
-
         },
 
-        
-        
-        // 首页三个板块数据模型
-        index_data_global:function(listCommodity,listMission,id){
-            var that=this;
-                        var buyhtml="<div class='content cfirst'>"+
-                                        "<label class='label'>求购</label>"+
-                                        "<img src='"+that.server_url+listCommodity[0].PIC+"'>"+
-                                    "</div>";//国外数据 海外专区第一个长一点
-                        var item;
-                        for (var i = 1; i <4; i++) {
-                            item=listCommodity[i];
-                            buyhtml+="<div class='content'>"+
-                                    "<label class='label'>求购</label>"+
-                                    "<img src='"+that.server_url+item.PIC+"'>"+
-                                  "</div>";
-                        }
-                        var missionhtml="";
-                        for (var i =0; i <3; i++) {
-                            item=listMission[i];
-                            missionhtml+="<div class='content'>"+
-                                    "<label class='label'>求售</label>"+
-                                    "<img src='"+that.server_url+item.PIC+"'>"+
-                                  "</div>";
-                        }
-                        missionhtml+="<div class='content cfirst'>"+
-                                        "<label class='label'>求售</label>"+
-                                        "<img src='"+that.server_url+listMission[3].PIC+"'>"+
-                                    "</div>";//最后长一点
-                        $("#"+id+" .buy").empty().append(buyhtml);
-                        $("#"+id+" .sell").empty().append(missionhtml);
-                     
-        },
 
         // 首页数据信息接口
-        index_data:function(){
-            var that=this;
-             that.index_data_ajax(function($data){
-                    // 成功
-                    if ($data.status==1) {
-                        // 海外专区
-                        that.index_data_global($data.message.abroadCommodityMsg,$data.message.abroadMissionMsg,"out");
-                        // 国内专区
-                        that.index_data_global($data.message.domesticCommodityMsg,$data.message.domesticMissionMsg,"in");
-                        // 实时任务专区
-                        var taskhtml="";
-                        var realTimeCommodityMsg=new Array();;
-                        var realTimeMissionMsg=new Array();;
-                        for (var i = 0; i<=3; i++) {
-                            realTimeCommodityMsg.push($data.message.realTimeMissionMsg[i]);
-                        }
-                        for (var i = 4; i<8; i++) {
-                            realTimeMissionMsg.push($data.message.realTimeMissionMsg[i]);
-                        }
-                        that.index_data_global(realTimeCommodityMsg,realTimeMissionMsg,"task");
-                    }
-                    // 其他提示
-                    else if($data.status<=0){
-
-                    }
-            });
-        },
-
-        index_data_ajax:function($fn){
-            $.ajax({
-                type: 'GET',
-                url: this.server_url +'main',
-                dataType: 'jsonp',
-                success: function($data){
-                    if ($fn){$fn($data);}
-                }
-            });
-        },
-
-        // 右侧栏快速到达
-        // quick_to:function(){
-        //     /*鼠标向下滚动后触发的左边固定栏目出现事件*/
-        //     var scrollFunc = function (e) { 
-        //         e = e || window.event;
-        //         if (e.wheelDelta < 0&& $(this).scrollTop()>150) { //当滑轮向下滚动时  
-        //             $('.right_fixed').removeClass('bounceOut hide').addClass('bounceInDown animated');
-        //             // setTimeout(function() {$('.right_fixed').removeClass('bounceInUp').addClass('bounceInDown animated');},10000);
-        //         }
-        //         if (e.wheelDelta> 0&& $(this).scrollTop()<500) { //当滑轮向上滚动时  
-        //             $('.right_fixed').removeClass('bounceIn').addClass('bounceOut'); 
-        //             // setTimeout(function() {$('.right_fixed').removeClass('bounceInDown').addClass('bounceInUp animated');},10000);
-        //         }
-        //         var thisright="l1";
-        //         if (($(this).scrollTop()>=$("#out").offset().top-$(".blocktr").height())&&$(this).scrollTop()<$("#in").offset().top) {
-        //             thisright="l2"
-        //         }
-        //         if (($(this).scrollTop()>=$("#in").offset().top-$(".blocktr").height())&&$(this).scrollTop()<$("#task").offset().top) {
-        //             thisright="l3"
-        //         }
-        //         if (($(this).scrollTop()>=$("#task").offset().top-$(".blocktr").height())) {
-        //             thisright="l4"
-        //         }
-        //         $("#"+thisright).siblings().removeClass("this_right");
-        //         $("#"+thisright).addClass('this_right');
-                
-        //     }  
-        //     //给页面绑定滑轮滚动事件  
-        //     if (document.addEventListener) {//firefox  
-        //         document.addEventListener('DOMMouseScroll', scrollFunc, false);  
-        //     }
-
-        //     //滚动滑轮触发scrollFunc方法  //ie 谷歌  
-        //     window.onmousewheel = document.onmousewheel = scrollFunc;  
-            
-        //     // 右侧栏快速链接
-        //     navMenu = $(".right .right_content");
-        //     menuItems = navMenu.find("a");
-        //     var offsetTop = 0;
-        //     menuItems.click(function(e){
-        //         var href = $(this).attr("href");
-        //         $(this).parents('li').addClass('this_right');
-        //         $(this).parents('li').siblings().removeClass("this_right");
-        //         if(href == "#top"){
-        //              offsetTop = 0;
-        //         }else{
-        //              offsetTop = href === "#" ? 0 : $(href).offset().top;
-        //         }
-        //         $('html, body').stop().animate({ 
-        //             scrollTop: offsetTop
-        //         }, 600);
-        //         e.preventDefault();
-        //     }); 
-
-        //     //回到顶部效果
-        //     $(".totop").hover(function(){
-        //         $('.toptips').stop().animate({ 
-        //             left: -80,opacity:'1'
-        //         }, 400);
-        //     },function(){
-        //         $('.toptips').stop().animate({ 
-        //             left: -120,opacity:'0'
-        //         }, 400);
-        //     });
-        // },
-
+        
 
         // 推荐活动切换模板
         slides_news_module:function(list_focus,box_focus,article_list){ 
@@ -302,33 +272,17 @@ function maskclose(){
         }
 
 
-        // // 导航栏滑块
-        // nav_to:function(){
-        //     $(".nav ul li").hover(function(){
-        //         var thisid=$(this).attr('id');
-        //         var leftx=(thisid-1)*150;
-        //         $('#this_nav').stop().animate({ 
-        //             left: leftx
-        //         }, 500);
-        //     },function(){
-        //         $('#this_nav').stop().animate({ 
-        //             left:0
-        //         }, 500);
-        //     });
-        // }
-
-       
-
+      
     }});
 })(jQuery)
 
 
 $(function(){
-    $.oop.init();
+    $.index.init();
     
 });
 
-//首页的图片轮播
+ //首页的图片轮播
   (function($) { //焦点图js
     $.extend({
       'foucs': function(con) {

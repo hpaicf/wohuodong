@@ -18,7 +18,7 @@ function maskclose(){
 }
 (function($){
         $.extend({header:{
-        server_url:"http://115.28.133.46:8080/wohuodong/WHD/",//服务器程序地址
+        server_url:"http://103.55.27.51:8080/wohuodong/",//服务器程序地址
         phoneCode:"",
         second:60,
         headDom:null,//头部dom的加载
@@ -69,7 +69,7 @@ function maskclose(){
                                             '</div>'+
                                         '</div>'+
                                         '<div class="choice">'+
-                                          '<a href="../../index.html" id="indexBtn">首页</a>'+
+                                          '<a href="../wohuodong/index.html" id="indexBtn">首页</a>'+
                                           '<a href="javascript:;" id="publishaBtn">+发活动</a>'+
                                           '<a href="javascript:;" id="downloadBtn">下载APP</a>'+
                                         '</div>'+
@@ -79,8 +79,8 @@ function maskclose(){
                                         '<!-- 登录后结束-->'+
                                         '<!-- 登录前 -->'+
                                             '<ul>'+
-                                              '<li><a href="../../login.html"  id="head_loginBtn">登录</a></li>'+
-                                              '<li><a href="../../register.html" id="head_registerBtn" >注册</a></li>'+
+                                              '<li><a href="../../wohuodong/login.html"  id="head_loginBtn">登录</a></li>'+
+                                              '<li><a href="../../wohuodong/register.html" id="head_registerBtn" >注册</a></li>'+
                                             '</ul>'+
                                         '</div>'+
                                     '</div>'+
