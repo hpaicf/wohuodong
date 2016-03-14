@@ -1,0 +1,80 @@
+﻿﻿@charset "utf-8";
+/* 
+---------------------------------
+Site: jx3.xoyo.com 
+Author:  chenfeng
+Last Changed by : chenfeng
+Last Update : 2014-11-22 16:15
+--------------------------------- 
+*/
+/*右边部分*/
+
+
+#main_logo{margin-left: 180px;}
+.main_center .main_logo{position: absolute;top:200px;left: 1px; width:500px;height: 200px;background: rgba(255,255,255,0.7);}
+.user_label{width: 180px;height: 70px;position: absolute;left: 220px;top:470px;background: url(../images/userreg.png) no-repeat center; }
+#main_logo{margin-left: 180px;}
+/*登录框的*/
+.login .user_label{background: url(../images/userlogin.png) no-repeat center; }*/
+
+/*登录前*/
+.login_div{width: 120px;float: left;margin-right: 10px;margin-top: 15px;}
+.login_div ul li{float: left;margin-right:5px;}
+.login_div ul li a{width:65px;height: 28px;color: #fff;letter-spacing: 5px;font-size: 18px;line-height: 28px;text-align: center;margin-top: 15px;}
+.login_div ul li a.this_a,.login_div ul li a:hover{color: #fff;}
+.search_text input:focus{
+     box-shadow:0 0 10px rgba(217,254,77,0.3)  inset;
+    transition:0.5s ease;
+    -o-transition:0.5s ease;
+    -webkit-transition:0.5s ease;
+}
+
+/*登录注册框*/
+.frame{min-width: 420px;min-height: 520px;position: absolute;top:120px;right: 100px;background: rgba(202,238,197,0.6);border-radius: 10px;box-shadow:0 0 15px #7e7c7c;}
+.frame_title{width: 100%;height:85px;background: #82db71;text-align: center;line-height: 85px;font-size: 26px;border-top-right-radius:10px;border-top-left-radius:10px;letter-spacing: 5px;margin-bottom: 20px;}
+.frame table{width: 80%;margin:0 auto;margin-bottom: 10px;margin-top: 5px;}
+.frame table tr{width: 100%;height:60px;}
+.frame table tr td{font-size: 15px;color:#777a77; }
+.frame table tr td.input{margin-left:40px;font-size: 14px;}
+.frame table tr td input{border:1px solid #82db71;height: 33px;padding: 0 8px;color: #777a77;width: 180px;border-radius: 5px;line-height: 17px;}
+p.warning{display: none;height: 15px;color: #ef4239;line-height:15px;width: 60%;margin: 0 auto;text-align: right;margin-top: 10px;font-size: 13px;}
+.frame table tr td.label{padding-left: 20px;width: 100px;}
+.checkinput,.Btn{width: 80%;margin: 0 auto;color: #777a77;height: 50px;}
+.checkinput input{float: left;margin-left: 35px;}
+.checkinput{height:40px;}
+.re_pro{float: left;margin-left: 10px;font-size: 13px;}
+a#re_pro{color: #777a77;width: auto;display: inline-block;}
+a.frame_rightBtn{width: auto;display: inline-block;color: #33a89f}
+a.frame_Btn{width: 100px;height: 35px;display: inline-block;background:#33a89f;text-align: center;line-height:35px; border-radius: 8px;margin-left: 15px;font-size: 16px;}
+a.frame_Btn:hover{background:#328d86;}
+a.frame_rightBtn:hover,a#forgetpwd:hover{color:#328d86; }
+#phonenumber{margin-left: 15px;}
+#phonegetvarify{width: 100px;height: 35px;background:#328d86;line-height: 35px; display: inline-block;font-size: 12px;}
+.Btn{padding-left:65px;width: 70%;letter-spacing: 1px;}
+/*第三方*/
+.three_users{width: 100%;margin-top: 10px;}
+.three_title{background: url(../images/login_line.png) no-repeat center;color:#717071;text-align: center;font-size: 13px; }
+/*输入框*/
+.frame table tr input:focus{
+    box-shadow:0 0 3px rgba(217,254,77,0.3)  inset;
+    border:solid 1px #fbc9c7;
+    transition:0.5s ease;
+    -o-transition:0.5s ease;
+    -webkit-transition:0.5s ease;
+}
+/*登录框的设置*/
+#login_frame{min-height: 470px;}
+#login_frame table tr td.label{height: 35px;display: inline-block;margin-top: 13px;margin-left: 15px;width: 50px;}
+#login_frame table tr td input{width: 200px;}
+#login_frame .checkinput input{margin-left: 45px;}
+#userimg{background: url(../images/userimg.png) no-repeat right;}
+#passwordimg{background: url(../images/passwordimg.png) no-repeat right;}
+#login_frame .checkinput{width: 60%;}
+#forgetpwd{color: #33a89f;width: auto;height: auto;display: inline-block;margin-left: 25px;font-size: 13px;}
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+    .frame table tr input:focus{
+    box-shadow:0 0 3px  rgba(217,254,77,0.3)  inset;
+    /* 谷歌浏览器输入框外壳 */
+  }
+}
+.hide{display: none;}
