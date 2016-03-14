@@ -69,7 +69,7 @@ function maskclose(){
                                             '</div>'+
                                         '</div>'+
                                         '<div class="choice">'+
-                                          '<a href="../wohuodong/index.html" id="indexBtn">首页</a>'+
+                                          '<a href="http://wohuodongv1.applinzi.com" id="indexBtn">首页</a>'+
                                           '<a href="javascript:;" id="publishaBtn">+发活动</a>'+
                                           '<a href="javascript:;" id="downloadBtn">下载APP</a>'+
                                         '</div>'+
@@ -79,8 +79,8 @@ function maskclose(){
                                         '<!-- 登录后结束-->'+
                                         '<!-- 登录前 -->'+
                                             '<ul>'+
-                                              '<li><a href="../../wohuodong/login.html"  id="head_loginBtn">登录</a></li>'+
-                                              '<li><a href="../../wohuodong/register.html" id="head_registerBtn" >注册</a></li>'+
+                                              '<li><a href="http://wohuodongv1.applinzi.com/login.php"  id="head_loginBtn">登录</a></li>'+
+                                              '<li><a href="http://wohuodongv1.applinzi.com/register.php" id="head_registerBtn" >注册</a></li>'+
                                             '</ul>'+
                                         '</div>'+
                                     '</div>'+
